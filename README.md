@@ -6,19 +6,23 @@ Tracking UIKit access on main thread
 [![License](https://img.shields.io/cocoapods/l/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 [![Platform](https://img.shields.io/cocoapods/p/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 
+![](Screenshots/Banner.png)
+
+## Description
+
+This is just a Swift port of [PSPDFUIKitMainThreadGuard.m](https://gist.github.com/steipete/5664345) using swizzling on `UIView` extension
+
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+- Just import the framework
 
 ## Features
-
-### Checking
 
 - setNeedsLayout
 - setNeedsDisplay
 - setNeedsDisplayInRect:
 
-Try 
+Try accessing UIKit from another thread and MainThreadGuard will assert
 
 ```swift
 class ViewController: UIViewController {
@@ -36,9 +40,6 @@ class ViewController: UIViewController {
 }
 ```
 
-### Swizzle
-
-This is just a Swift port of [PSPDFUIKitMainThreadGuard.m](https://gist.github.com/steipete/5664345) using swizzling on `UIView` extension
 
 ## Installation
 
