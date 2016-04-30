@@ -1,0 +1,14 @@
+PODS:
+  - MainThreadGuard (0.1.0)
+
+DEPENDENCIES:
+  - MainThreadGuard (from `../../`)
+
+EXTERNAL SOURCES:
+  MainThreadGuard:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  MainThreadGuard: 09a89a1af2aa61ad2c5cec625a2156835cafff76
+
+COCOAPODS: 0.39.0
