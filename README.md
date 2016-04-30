@@ -1,45 +1,61 @@
 # MainThreadGuard
+Tracking UIKit access on main thread
 
-[![CI Status](http://img.shields.io/travis/onmyway133/MainThreadGuard.svg?style=flat)](https://travis-ci.org/onmyway133/MainThreadGuard)
-[![Version](https://img.shields.io/cocoapods/v/MainThreadGuard.svg?style=flat)](http://cocoadocs.org/docsets/MainThreadGuard)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/MainThreadGuard.svg?style=flat)](http://cocoadocs.org/docsets/MainThreadGuard)
-[![Platform](https://img.shields.io/cocoapods/p/MainThreadGuard.svg?style=flat)](http://cocoadocs.org/docsets/MainThreadGuard)
-
-## Description
-
-**MainThreadGuard** description.
+[![CI Status](http://img.shields.io/travis/Khoa Pham/MainThreadGuard.svg?style=flat)](https://travis-ci.org/Khoa Pham/MainThreadGuard)
+[![Version](https://img.shields.io/cocoapods/v/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
+[![License](https://img.shields.io/cocoapods/l/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
+[![Platform](https://img.shields.io/cocoapods/p/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 
 ## Usage
 
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Features
+
+### Checking
+
+- setNeedsLayout
+- setNeedsDisplay
+- setNeedsDisplayInRect:
+
+Try 
+
 ```swift
-<API>
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let label = UILabel()
+        view.addSubview(label)
+
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+            label.text = "Setting text on background thread"
+        }
+    }
+}
 ```
+
+### Swizzle
+
+This is just a Swift port of [PSPDFUIKitMainThreadGuard.m](https://gist.github.com/steipete/5664345) using swizzling on `UIView` extension
 
 ## Installation
 
-**MainThreadGuard** is available through [CocoaPods](http://cocoapods.org). To install
+MainThreadGuard is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'MainThreadGuard'
+pod "MainThreadGuard"
 ```
 
-**MainThreadGuard** is also available through [Carthage](https://github.com/Carthage/Carthage).
-To install just write into your Cartfile:
-
-```ruby
-github "onmyway133/MainThreadGuard"
-```
+## Credit
+Credit goes to [PSPDFUIKitMainThreadGuard.m](https://gist.github.com/steipete/5664345)
 
 ## Author
 
 Khoa Pham, onmyway133@gmail.com
 
-## Contributing
-
-We would love you to contribute to **MainThreadGuard**, check the [CONTRIBUTING](https://github.com/onmyway133/MainThreadGuard/blob/master/CONTRIBUTING.md) file for more info.
-
 ## License
 
-**MainThreadGuard** is available under the MIT license. See the [LICENSE](https://github.com/onmyway133/MainThreadGuard/blob/master/LICENSE.md) file for more info.
+MainThreadGuard is available under the MIT license. See the LICENSE file for more info.

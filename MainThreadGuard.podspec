@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "MainThreadGuard"
-  s.summary          = "A short description of MainThreadGuard."
-  s.version          = "0.1.0"
+  s.summary          = "Tracking UIKit access on main thread"
+  s.version          = "1.0.0"
   s.homepage         = "https://github.com/onmyway133/MainThreadGuard"
   s.license          = 'MIT'
   s.author           = { "Khoa Pham" => "onmyway133@gmail.com" }
@@ -16,12 +16,8 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.2'
 
   s.requires_arc = true
-  s.ios.source_files = 'Sources/{iOS,Shared}/**/*'
-  s.tvos.source_files = 'Sources/{iOS,Shared}/**/*'
-  s.osx.source_files = 'Sources/{Mac,Shared}/**/*'
+  s.source_files = 'Sources/**/*'
 
-  # s.ios.frameworks = 'UIKit', 'Foundation'
-  # s.osx.frameworks = 'Cocoa', 'Foundation'
-
-  # s.dependency 'Whisper', '~> 1.0'
+  s.ios.frameworks = 'UIKit', 'Foundation'
+  s.osx.frameworks = 'Cocoa', 'Foundation'
 end

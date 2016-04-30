@@ -1,5 +1,4 @@
 import UIKit
-import MainThreadGuard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
