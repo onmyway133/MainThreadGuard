@@ -5,6 +5,7 @@ Tracking UIKit access on main thread
 [![Version](https://img.shields.io/cocoapods/v/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 [![License](https://img.shields.io/cocoapods/l/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 [![Platform](https://img.shields.io/cocoapods/p/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 
 ![](Screenshots/Banner.png)
 
@@ -27,16 +28,17 @@ Try accessing UIKit from another thread and MainThreadGuard will assert
 ```swift
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = UIColor.white
 
-        let label = UILabel()
-        view.addSubview(label)
+    let label = UILabel()
+    view.addSubview(label)
 
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
-            label.text = "Setting text on background thread"
-        }
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+      label.text = "Setting text on background thread"
     }
+  }
 }
 ```
 

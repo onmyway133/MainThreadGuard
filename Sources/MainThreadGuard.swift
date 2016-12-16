@@ -13,10 +13,10 @@ import UIKit
 // http://nshipster.com/swift-objc-runtime/
 // https://gist.github.com/steipete/5664345
 
-public extension UIView {
-  public override class func initialize() {
+extension UIView {
+  open override class func initialize() {
     struct Static {
-      static var token: dispatch_once_t = 0
+      static let token = UUID().uuidString
     }
 
     // make sure this isn't a subclass
@@ -24,7 +24,7 @@ public extension UIView {
       return
     }
 
-    dispatch_once(&Static.token) {
+    DispatchQueue.mainThreadGuard_once(Static.token) {
       let swizzle: (String, String) -> Void = { (original, swizzled) in
         let originalSelector = Selector(original)
         let swizzledSelector = Selector(swizzled)
@@ -41,7 +41,7 @@ public extension UIView {
         }
       }
 
-      let pairs = [
+      let pairs: [String: String] = [
         "setNeedsLayout": "guard_setNeedsLayout",
         "setNeedsDisplay": "guard_setNeedsDisplay",
         "setNeedsDisplayInRect:": "guard_setNeedsDisplayInRect:"
@@ -65,15 +65,35 @@ public extension UIView {
     guard_setNeedsDisplay()
   }
 
-  func guard_setNeedsDisplayInRect(rect: CGRect) {
+  func guard_setNeedsDisplayInRect(_ rect: CGRect) {
     guard_check()
     guard_setNeedsDisplayInRect(rect)
   }
 
   // MARK: Checking
   func guard_check() {
-    assert(NSThread.isMainThread())
+    assert(Thread.isMainThread)
 
     // iOS 8 layouts the MFMailComposeController in a background thread on an UIKit queue.
+  }
+}
+
+private extension DispatchQueue {
+
+  static var mainThreadGuardTokens = [String]()
+
+  class func mainThreadGuard_once(_ token: String, closure: () -> Void) {
+    objc_sync_enter(self)
+
+    defer {
+      objc_sync_exit(self)
+    }
+
+    guard !mainThreadGuardTokens.contains(token) else {
+      return
+    }
+
+    mainThreadGuardTokens.append(token)
+    closure()
   }
 }

@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  MainThreadGuard: cb8f35d8ca7c497ad9afab033e38d4d6ed2b467d
+  MainThreadGuard: 39f8c507db14c547f97b6ad9087dfc879e298466
 
 PODFILE CHECKSUM: 820c83fb14e5abd0f19ce73c95d5fddd1bc305ee
 
-COCOAPODS: 1.0.0.beta.5
+COCOAPODS: 1.1.1
