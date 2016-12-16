@@ -42,14 +42,15 @@ class ViewController: UIViewController {
 }
 ```
 
-
 ## Installation
 
 MainThreadGuard is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+You should add this to Debug configuration only
+
 ```ruby
-pod "MainThreadGuard"
+pod "MainThreadGuard", git: 'https://github.com/onmyway133/MainThreadGuard', configurations: 'Debug'
 ```
 
 ## Credit

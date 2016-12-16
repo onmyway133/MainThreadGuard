@@ -3,6 +3,6 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'MainThreadGuardDemo' do
- pod 'MainThreadGuard', path: '../../'
+ pod 'MainThreadGuard', path: '../../', configurations: 'Debug'
 end
 
