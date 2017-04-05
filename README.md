@@ -1,7 +1,6 @@
 # MainThreadGuard
 Tracking UIKit access on main thread
 
-[![CI Status](http://img.shields.io/travis/Khoa Pham/MainThreadGuard.svg?style=flat)](https://travis-ci.org/Khoa Pham/MainThreadGuard)
 [![Version](https://img.shields.io/cocoapods/v/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 [![License](https://img.shields.io/cocoapods/l/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
 [![Platform](https://img.shields.io/cocoapods/p/MainThreadGuard.svg?style=flat)](http://cocoapods.org/pods/MainThreadGuard)
