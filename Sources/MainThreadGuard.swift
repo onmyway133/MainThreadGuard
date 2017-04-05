@@ -13,8 +13,16 @@ import UIKit
 // http://nshipster.com/swift-objc-runtime/
 // https://gist.github.com/steipete/5664345
 
+public class Guard {
+
+  public static func setup() {
+    UIView.setupForMainThreadGuard()
+  }
+}
+
 extension UIView {
-  open override class func initialize() {
+
+  static func setupForMainThreadGuard() {
     struct Static {
       static let token = UUID().uuidString
     }

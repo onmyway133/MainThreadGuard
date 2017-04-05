@@ -15,7 +15,17 @@ This is just a Swift port of [PSPDFUIKitMainThreadGuard.m](https://gist.github.c
 
 ## Usage
 
-- Just import the framework
+Call `Guard.setup` 
+
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  // setup
+
+  Guard.setup()
+
+  return true
+}
+```
 
 ## Features
 
@@ -52,9 +62,6 @@ You should add this to Debug configuration only
 ```ruby
 pod "MainThreadGuard", git: 'https://github.com/onmyway133/MainThreadGuard', configurations: 'Debug'
 ```
-
-## Credit
-Credit goes to [PSPDFUIKitMainThreadGuard.m](https://gist.github.com/steipete/5664345)
 
 ## Author
 
