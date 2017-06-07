@@ -28,6 +28,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ## Features
 
+It works by swizzling in the following methods
+
 - setNeedsLayout
 - setNeedsDisplay
 - setNeedsDisplayInRect:
@@ -50,6 +52,10 @@ class ViewController: UIViewController {
   }
 }
 ```
+
+## Xcode 9+
+
+Xcode 9+ has [Main Thread Checker](https://developer.apple.com/documentation/code_diagnostics/main_thread_checker)
 
 ## Installation
 
