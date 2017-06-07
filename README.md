@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 
 ## Xcode 9+
 
-Xcode 9+ has [Main Thread Checker](https://developer.apple.com/documentation/code_diagnostics/main_thread_checker)
+Xcode 9+ has [Main Thread Checker](https://developer.apple.com/documentation/code_diagnostics/main_thread_checker), which detects invalid use of AppKit, UIKit, and other APIs from a background thread.
 
 ## Installation
 
